@@ -1,0 +1,7 @@
+const timeA = new Date().getTime()
+var fs = require('fs')
+var babelConfig = JSON.parse(fs.readFileSync('./.babelrc'))
+require('babel-register')(babelConfig)
+require('./puppetter/TimeoutError.js')
+const timeB = new Date().getTime()
+console.log(timeB - timeA)
