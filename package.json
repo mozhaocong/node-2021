@@ -14,11 +14,12 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "div": "cross-env NODE_ENV=production node babelrc.js "
   },
   "babel": {
     "presets": [
