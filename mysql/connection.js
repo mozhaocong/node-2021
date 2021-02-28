@@ -1,7 +1,7 @@
 var mysql = require('mysql')
 // import { createWriteStream } from '../public/fs'
 // node
-console.log(global)
+console.log(global.name)
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -25,5 +25,4 @@ connection.query('SELECT * FROM test', function(error, results, fields) {
   }
   console.log('SELECT ', results)
 })
-
 connection.end()
