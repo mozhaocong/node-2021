@@ -1,13 +1,11 @@
 const http = require('http');
 const hostname = '127.0.0.1';
+
 const port = 3001;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   // res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.setHeader('Content-Type', 'application/json;charset=UTF-8');
-  // res.setHeader('charset=utf-8');
-  // res.setHeader('meta', 'charset="UTF-8');
-  // res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
   // 后端处理跨域问题
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
