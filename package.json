@@ -2,9 +2,11 @@
   "name": "puppetter",
   "version": "1.0.0",
   "description": "",
-  "main": "http/http.js",
+  "main": "node/http/http.js",
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "babel-polyfill": "^6.26.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
     "mysql": "^2.18.1",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "cross-env": "^7.0.3",
@@ -21,11 +24,12 @@
     "eslint-plugin-react": "^7.22.0"
   },
   "scripts": {
-    "div": "cross-env NODE_ENV=production nodemon babelrc.js "
+    "div": "cross-env NODE_ENV=production nodemon babelrc.js ",
+    "dev": "cross-env NODE_ENV=production node babelrc.js "
   },
   "babel": {
     "presets": [
-      "es2015",
+      "es2017",
       "react"
     ]
   },

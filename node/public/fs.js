@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('node/public/fs')
 export function createWriteStream(data = '', src = 'data.json') {
 // 文件不存储会创建 如果存在会先清空文件类容，再将文件写入
 // 第一个参数，写入路径
