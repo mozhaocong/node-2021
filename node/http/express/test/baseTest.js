@@ -12,12 +12,11 @@ function toUrlQuestion(data) {
     return ''
   }
 }
-
-const baseData = {
-  data: '',
-  baseAll: function(str = '', c = (req, res, next) => {}) {
+function postBset() {
+  var express = require('express')
+  express().baseAll = function(str = '', c = (req, res, next) => {}) {
     try {
-      this.data.all(str, function(req, res, next) {
+      express().all(str, function(req, res, next) {
         defHeader.res.forEach(item => {
           res.header(item.field, item.val)
         })
@@ -25,18 +24,13 @@ const baseData = {
         c(req, res, next)
       })
     } catch (e) {
-      console.log(e)
-      console.log(this.data)
       console.log('载体为空')
     }
-  },
-  baseInt: function(data) {
-    console.log(typeof data)
-    this.data = data
-    data.baseAll = this.baseAll
-    // return returnData
   }
+  return express
 }
-
-// export default baseData
-module.exports = baseData
+function fun() {
+  // eslint-disable-next-line new-cap
+  return new postBset()
+}
+module.exports = fun
