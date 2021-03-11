@@ -35,9 +35,7 @@
         },
         async postData() {
           console.log('url', `${this.publicUrl}:${this.port}?data=12345`)
-          // let data =  await $.get(`${this.publicUrl}:${this.port}?data=123456`)
-          let data =  await $.get(`${this.publicUrl}:${this.port}/api`)
-          // let data =  await $.get(`https://uat.ipipa.cn:9008/business/portal/category/query/all/5e9749wi`)
+          let data =  await $.get(`${this.publicUrl}:${this.port}/base`)
           console.log('data', data)
         }
       }

@@ -1,12 +1,21 @@
 var express = require('express')
+const baseExpress = require('../base')
 const base = express()
-
-base.use('/base', function(req, res, next) {
-  console.log('/base')
-  next()
-})
+baseExpress.baseInt(base)
+// base.use('/base', function(req, res, next) {
+//   console.log('/base')
+//   next()
+// })
 base.all('/base', function(req, res, next) {
-  res.end('/base')
+  const data = JSON.stringify({
+    data: 1111
+  })
+  res.end(data)
 })
-
-export default base
+base.baseAll('/baseAll', function(req, res, next) {
+  const data = JSON.stringify({
+    data: 2222
+  })
+  res.end(data)
+})
+module.exports = base
