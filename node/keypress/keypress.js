@@ -1,12 +1,18 @@
 var keypress = require('keypress')
 
 keypress(process.stdin)
-process.stdin.on('keypress', function(ch, key) {
-  console.log('got "keypress"', key)
-  if (key && key.ctrl && key.name === 'c') {
-    process.stdin.pause()
+const kepresss = {
+  fun: function() {
+    process.stdin.on('keypress', (ch, key) => {
+      this.kepresss(key)
+      if (key && key.ctrl && key.name === 'c') {
+        process.stdin.pause()
+      }
+    })
+    process.stdin.setRawMode(true)
+    process.stdin.resume()
+  },
+  kepresss: function(data) {
   }
-})
-
-process.stdin.setRawMode(true)
-process.stdin.resume()
+}
+module.exports = kepresss
