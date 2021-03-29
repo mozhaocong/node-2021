@@ -15,19 +15,28 @@ async function googlePuppeteer() {
     headless: false
   })
   const pageAll = await browser.pages()
-  const page = pageAll[0]
-  // console.log('pageA', page)
-  function testForEach(data) {
-    if (!data.length) return
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i].innerHTML)
+  let page = null
+  for (const i of pageAll) {
+    if (i.mainFrame().url() === 'https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&keyword=%E5%A5%B3%E8%A3%85&clk1=0f044ae2f43eecd1f2f7927654b6751d&upsId=0f044ae2f43eecd1f2f7927654b6751d') {
+      page = i
     }
   }
-  await page.$$eval('.topic-detail', el => testForEach(el))
-  // console.log(presentation)
-  console.log('结束')
-  // await page[0].screenshot({ path: 'cnblogs.png' })
+  // $$eval 是获取元素属性
+  // $获取 ElementHandle 用于操作 例如点击，输入
+  // const textA = await page.$('.group-list .item-text')
+  // // console.log('textA', textA.click())
+  // textA.click()
+  // const textB = await page.$$eval('.group-list>.item-text', eles => eles.map(ele => ele.innerText))
+  // console.log(textB)
+  // const textC = await page.$$eval('.group-list .childs .item-text', eles => eles.map(ele => ele.innerText))
+  // console.log(textC)
+  // const textD = await page.$$('.group-list .item-text')
+  // // console.log('textA', textA.click())
+  // textD[0].click()
+  // await page.screenshot({ path: 'cnblogs.png' })
   // await browser.close()
+  const textC = await page.$$eval('.pc-search-items-list .pc-items-item.item-undefined .title-text', eles => eles.map(ele => ele.innerText))
+  console.log(textC)
 }
 
 module.exports = googlePuppeteer
