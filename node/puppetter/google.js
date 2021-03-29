@@ -17,7 +17,7 @@ async function googlePuppeteer() {
   const pageAll = await browser.pages()
   let page = null
   for (const i of pageAll) {
-    if (i.mainFrame().url() === 'https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&keyword=%E5%A5%B3%E8%A3%85&clk1=0f044ae2f43eecd1f2f7927654b6751d&upsId=0f044ae2f43eecd1f2f7927654b6751d') {
+    if (i.mainFrame().url() === 'https://blog.csdn.net/qq_42543250/article/details/81347368') {
       page = i
     }
   }
@@ -33,10 +33,13 @@ async function googlePuppeteer() {
   // const textD = await page.$$('.group-list .item-text')
   // // console.log('textA', textA.click())
   // textD[0].click()
-  // await page.screenshot({ path: 'cnblogs.png' })
+  console.log('3.00')
+  await this.sleep(3000)
+  console.log('4000')
+  await page.screenshot({ path: 'cnblogs.png' })
   // await browser.close()
-  const textC = await page.$$eval('.pc-search-items-list .pc-items-item.item-undefined .title-text', eles => eles.map(ele => ele.innerText))
-  console.log(textC)
+  // const textC = await page.$$eval('.pc-search-items-list .pc-items-item.item-undefined .title-text', eles => eles.map(ele => ele.innerText))
+  // console.log(textC)
 }
 
 module.exports = googlePuppeteer
