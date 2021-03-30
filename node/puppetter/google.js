@@ -5,7 +5,7 @@
 // puppeteer快速调试
 // 本文来源：码农网
 // 本文链接：https://www.codercto.com/a/44853.html
-
+const { init } = require('./util/util')
 const puppeteer = require('puppeteer')
 async function googlePuppeteer() {
   // console.log('googlePuppeteer', this)
@@ -21,6 +21,11 @@ async function googlePuppeteer() {
       page = i
     }
   }
+  init(page)
+  const test = await page.mzcnTest('.hotArticle-list li')
+  console.log(test)
+  const testA = await page.mzcnTestClick('.hotArticle-list li', 'Scrapy 安装介绍以及基本操作  44247')
+  console.log(testA)
   // $$eval 是获取元素属性
   // $获取 ElementHandle 用于操作 例如点击，输入
   // const textA = await page.$('.group-list .item-text')
@@ -33,10 +38,7 @@ async function googlePuppeteer() {
   // const textD = await page.$$('.group-list .item-text')
   // // console.log('textA', textA.click())
   // textD[0].click()
-  console.log('3.00')
   await this.sleep(3000)
-  console.log('4000')
-  await page.screenshot({ path: 'cnblogs.png' })
   // await browser.close()
   // const textC = await page.$$eval('.pc-search-items-list .pc-items-item.item-undefined .title-text', eles => eles.map(ele => ele.innerText))
   // console.log(textC)

@@ -6,21 +6,17 @@
 
 const axiostest = require('./axios/axios')
 const googlePuppeteer = require('./puppetter/google')
-// import msdatas from '../util/util'
+const { sleep } = require('../util/util')
 
-const msdastas = require('../util/util')
+const obj = {
+  init: async function() {
+    const data = await axiostest()
+    this.webSocketDebuggerUrl = data.webSocketDebuggerUrl
+    this.googlePuppeteer()
+  },
+  sleep: sleep,
+  webSocketDebuggerUrl: '',
+  googlePuppeteer: googlePuppeteer
+}
 
-console.log(msdastas)
-
-// const obj = {
-//   init: async function() {
-//     const data = await axiostest()
-//     this.webSocketDebuggerUrl = data.webSocketDebuggerUrl
-//     this.googlePuppeteer()
-//   },
-//   sleep: sleep,
-//   webSocketDebuggerUrl: '',
-//   googlePuppeteer: googlePuppeteer
-// }
-//
-// obj.init()
+obj.init()

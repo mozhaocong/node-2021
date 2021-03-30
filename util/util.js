@@ -1,13 +1,12 @@
-function sleep(a) {
-  new Promise((resolve, reject) => {
+async function sleep(a) {
+  await new Promise((resolve, reject) => {
     setTimeout(() => {
+      console.log('延时30000')
       resolve()
     }, a)
   })
 }
 
-const data = '3213'
 module.exports = {
-  sleep,
-  data
+  sleep
 }
