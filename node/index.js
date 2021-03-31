@@ -6,6 +6,7 @@
 
 const axiostest = require('./axios/axios')
 const googlePuppeteer = require('./puppetter/google')
+const response = require('./puppetter/response')
 const { sleep } = require('../util/util')
 
 const obj = {
@@ -15,6 +16,7 @@ const obj = {
     this.googlePuppeteer()
   },
   sleep: sleep,
+  response: response,
   webSocketDebuggerUrl: '',
   googlePuppeteer: googlePuppeteer
 }

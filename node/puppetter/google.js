@@ -17,31 +17,27 @@ async function googlePuppeteer() {
   const pageAll = await browser.pages()
   let page = null
   for (const i of pageAll) {
-    if (i.mainFrame().url() === 'https://blog.csdn.net/qq_42543250/article/details/81347368') {
+    if (i.mainFrame().url().indexOf('http://m.ipipa.cn/') > -1) {
       page = i
     }
   }
-  init(page)
-  const test = await page.mzcnTest('.hotArticle-list li')
+  if (page) init(page)
+  this.page = page
+  // this.response()
+  const test = await page.mzcnTest('.group-list .item-text')
   console.log(test)
-  const testA = await page.mzcnTestClick('.hotArticle-list li', 'Scrapy 安装介绍以及基本操作  44247')
+  // await page.$$eval('.group-list .item-text', eles => eles.forEach(res => {
+  //   if (res.innerText === '开发区实验学校') { res.click() }
+  // }))
+  const testA = page.mzcCustomize('.group-list .item-text', function(data) {
+    return data.innerText
+  })
   console.log(testA)
-  // $$eval 是获取元素属性
-  // $获取 ElementHandle 用于操作 例如点击，输入
-  // const textA = await page.$('.group-list .item-text')
-  // // console.log('textA', textA.click())
-  // textA.click()
-  // const textB = await page.$$eval('.group-list>.item-text', eles => eles.map(ele => ele.innerText))
-  // console.log(textB)
-  // const textC = await page.$$eval('.group-list .childs .item-text', eles => eles.map(ele => ele.innerText))
-  // console.log(textC)
-  // const textD = await page.$$('.group-list .item-text')
-  // // console.log('textA', textA.click())
-  // textD[0].click()
+  // const testA = await page.mzcnTestClick('.hotArticle-list li', 'Scrapy 安装介绍以及基本操作  44247')
+  // console.log(testA)
+
   await this.sleep(3000)
   // await browser.close()
-  // const textC = await page.$$eval('.pc-search-items-list .pc-items-item.item-undefined .title-text', eles => eles.map(ele => ele.innerText))
-  // console.log(textC)
 }
 
 module.exports = googlePuppeteer
