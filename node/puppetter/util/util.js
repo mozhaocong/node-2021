@@ -7,28 +7,18 @@ function init(page) {
     return res
   }
   page.mzcCustomize = async function(data, value, ch = function() {}) {
-    // const bodyHandle = await page.$$(data)
-    console.log(data)
-    const testdata = value
+    const bodyHandle = await page.$$(data)
     const links = await page.evaluate((data) => {
-      const urls = []
-      const hrefs = document.querySelectorAll('.group-list .item-text')
-      hrefs.forEach(function(el) {
-        urls.push(el[data])
+      const selectors = data.dom
+      const value = data.value
+      const array = []
+      document.querySelectorAll(selectors).forEach(res => {
+        array.push(res[value])
       })
-      return data
-    }, testdata)
-    console.log('links', links)
-    // function test(data1, ...value1) {
-    //   console.log('test', data1, value1)
-    //   console.log(typeof value1[0])
-    // }
-    // test(data, value)
-    // console.log('document', document.querySelectorAll(data))
-    // for (const i of bodyHandle) {
-    //   const html = await page.evaluate((body) => body['innerText'], i)
-    //   console.log(html, value)
-    // }
+      return array
+    }, { dom: data, value: value })
+    ch(links, bodyHandle)
+    // console.log('links', links)
     // const html = await page.evaluate((body) => body.innerText, bodyHandle)
     // console.log('html', bodyHandle.length)
     // console.log('html', value, bodyHandle)
@@ -45,5 +35,28 @@ function init(page) {
     }
     return false
   }
+
+  page.on('console', msg => {
+    for (let i = 0; i < msg.args().length; ++i) { console.log(`${i}: ${msg.args()[i]}`) } // 译者注：这句话的效果是打印到你的代码的控制台
+  })
 }
-module.exports = { init }
+
+function PtConsole() {
+  const data = arguments
+  if (!data.length) {
+    return
+  } else if (data.length === 1) {
+    this.page.evaluate((value) => console.log(value), data[0]) // 这个代码表示在页面实例中执行了console.log。如果没有监听console事件，这里的输出不会出现在你的控制台
+  } else {
+    // for (const dataKey of data) {
+    //   this.page.evaluate((value) => console.log(value), dataKey)
+    // }
+    this.page.evaluate((value) => {
+      for (const i in value) {
+        console.log(value[i])
+      }
+    }, data) // evaluate, 第二个参数 如果是数组会转化为对象
+  }
+}
+
+module.exports = { init, PtConsole }

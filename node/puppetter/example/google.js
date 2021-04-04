@@ -11,6 +11,5 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage()
   await page.goto('https://www.cnblogs.com/')
   await page.screenshot({ path: 'cnblogs.png' })
-
   await browser.close()
 })()

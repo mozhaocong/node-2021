@@ -23,20 +23,22 @@ async function googlePuppeteer() {
   }
   if (page) init(page)
   this.page = page
-  // this.response()
+  this.response()
   // const test = await page.mzcnTest('.group-list .item-text')
   // console.log(test)
   // await page.$$eval('.group-list .item-text', eles => eles.forEach(res => {
   //   if (res.innerText === '开发区实验学校') { res.click() }
   // }))
-  const testA = page.mzcCustomize('.group-list .item-text', 'innerText', function(item, dom) {
-    console.log(item)
-  })
-  console.log(testA)
+  // const testA = page.mzcCustomize('.group-list .item-text', 'offsetHeight', async function(item, dom) {
+  //   console.log(item)
+  //   const first = await page.evaluate(data => data.offsetHeight, dom[1])
+  //   console.log(first)
+  // })
+  // console.log(testA)
   // const testA = await page.mzcnTestClick('.hotArticle-list li', 'Scrapy 安装介绍以及基本操作  44247')
   // console.log(testA)
 
-  await this.sleep(3000)
+  // await this.sleep(3000)
   // await browser.close()
 }
 
