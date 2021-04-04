@@ -21,9 +21,12 @@ async function googlePuppeteer() {
       page = i
     }
   }
-  if (page) init(page)
   this.page = page
-  this.response()
+  if (page) init(page)
+  this.page.evaluate(() => { // 就是在页面运行js方法
+    console.log(window.localStorage.getItem('RM_1000000325_6236620_59047990'))
+  })
+  // this.response()
   // const test = await page.mzcnTest('.group-list .item-text')
   // console.log(test)
   // await page.$$eval('.group-list .item-text', eles => eles.forEach(res => {
