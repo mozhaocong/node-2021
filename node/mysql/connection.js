@@ -18,7 +18,7 @@ connection.query('SELECT 1 + 1 AS solution', function(error, results, fields) {
   console.log('The solution is: ', results[0].solution)
 })
 
-connection.query('SELECT * FROM test', function(error, results, fields) {
+connection.query('SELECT * FROM websites', function(error, results, fields) {
   if (error) {
     console.log(error)
     return
