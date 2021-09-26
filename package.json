@@ -26,13 +26,14 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0",
+    "ts-node-dev": "1.1.8",
     "typescript": "^4.1.3",
-    "ts-node-dev": "1.1.8"
+    "webpack": "^5.54.0"
   },
   "scripts": {
     "div": "cross-env NODE_ENV=production nodemon babelrc.js ",
     "dev": "cross-env NODE_ENV=production node babelrc.js ",
-    "ts": "ts-node-dev --respawn --transpile-only server.ts "
+    "ts": "ts-node-dev --respawn --transpile-only TS/index.ts "
   },
   "babel": {
     "presets": [

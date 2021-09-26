@@ -1,8 +1,5 @@
 function response() {
-  this.responseFirst = false
-  console.log('response开始')
   this.responseHandle = async(response) => {
-    // console.log(response.request()._resourceType)
     if (response.request()._resourceType === 'xhr') {
       console.log(response.url())
       // console.log(response.headers())// response 对象 的headers

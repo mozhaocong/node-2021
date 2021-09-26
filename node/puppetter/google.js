@@ -8,24 +8,25 @@
 const { init } = require('./util/util')
 const puppeteer = require('puppeteer')
 async function googlePuppeteer() {
-  // console.log('googlePuppeteer', this)
   const browser = await puppeteer.connect({
     browserWSEndpoint: this.webSocketDebuggerUrl,
     'defaultViewport': { width: 1903, height: 4231 },
     headless: false
   })
   const pageAll = await browser.pages()
-  let page = null
-  for (const i of pageAll) {
-    if (i.mainFrame().url().indexOf('http://m.ipipa.cn/') > -1) {
-      page = i
-    }
-  }
-  this.page = page
-  if (page) init(page)
-  this.page.evaluate(() => { // 就是在页面运行js方法
-    console.log(window.localStorage.getItem('RM_1000000325_6236620_59047990'))
-  })
+  // let page = null
+  const page = await browser.newPage()
+  await page.goto('https://www.cnblogs.com/')
+  // for (const i of pageAll) {
+  //   if (i.mainFrame().url().indexOf('http://m.ipipa.cn/') > -1) {
+  //     page = i
+  //   }
+  // }
+  // this.page = page
+  // if (page) init(page)
+  // this.page.evaluate(() => { // 就是在页面运行js方法
+  //   console.log(window.localStorage.getItem('RM_1000000325_6236620_59047990'))
+  // })
   // this.response()
   // const test = await page.mzcnTest('.group-list .item-text')
   // console.log(test)

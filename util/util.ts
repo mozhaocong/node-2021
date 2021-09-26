@@ -1,12 +1,17 @@
 async function sleep(a) {
   await new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('延时30000')
-      resolve()
+      resolve(true)
     }, a)
   })
+
 }
 
-module.exports = {
+class utilClass {
+    sleep: (number) =>  Promise<void> = sleep
+}
+
+export {
+  utilClass,
   sleep
 }

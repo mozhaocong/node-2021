@@ -2,7 +2,8 @@
   "presets": [
     "env",
     "stage-0",
-    "es2017"
+    "es2017",
+    "@babel/preset-typescript"
   ],
   "plugins": []
 }
