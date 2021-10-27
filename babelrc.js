@@ -1,4 +1,3 @@
-console.time('time')
 console.log('NODE_ENV', process.env.NODE_ENV)
 console.log('process env', process.argv)
 require('babel-polyfill')
