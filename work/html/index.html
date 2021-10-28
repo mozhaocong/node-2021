@@ -35,7 +35,7 @@
         },
         async postData() {
           console.log('url', `${this.publicUrl}:${this.port}?data=12345`)
-          let data =  await $.get(`${this.publicUrl}:${this.port}/base`)
+          let data =  await $.get(`${this.publicUrl}:${this.port}/baseAll?data=123456`)
           console.log('data', data)
         }
       }

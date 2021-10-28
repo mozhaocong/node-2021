@@ -33,7 +33,7 @@
   "scripts": {
     "div": "cross-env NODE_ENV=production nodemon babelrc.js ",
     "dev": "cross-env NODE_ENV=production node babelrc.js ",
-    "ts": "ts-node-dev --respawn --transpile-only TS/index.ts "
+    "ts": "ts-node-dev --respawn --transpile-only ./work/TS/express.ts "
   },
   "babel": {
     "presets": [
